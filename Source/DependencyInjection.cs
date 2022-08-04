@@ -32,11 +32,9 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IEnumerable<(RegisterComponentAttribute, Type)> CollectServices(Assembly assembly, DependencyGroup group)
         {
             foreach (var type in assembly.GetTypes())
-            {
-                var attr = type.GetCustomAttribute<RegisterComponentAttribute>();
-                if (attr != null && attr.Group == group)
-                    yield return (attr, type);
-            }
+                foreach (var attr in type.GetCustomAttributes<RegisterComponentAttribute>())
+                    if (attr.Group == group)
+                        yield return (attr, type);
         }
     }
 

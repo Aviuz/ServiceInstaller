@@ -2,7 +2,7 @@ using System;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class RegisterComponentAttribute : Attribute
     {
         public DependencyGroup Group { get; }
